@@ -3,9 +3,337 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ATI[UCV] 2025-2</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100%;
+      }
+
+      .contenedor-index {
+        max-width: 65%;
+        font-family: Arial, sans-serif;
+        margin-inline: auto;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* 1. Contenedor Principal (Header/Nav) */
+      header {
+        max-width: 95%;
+        background-color: #79a3e0;
+        overflow: hidden;
+        border-bottom: 1px solid #79a3e0;
+        height: 60px;
+      }
+
+      /* 2. Estilos Comunes de las "Celdas" (<li>) */
+      nav ul li {
+        border-right: 1px solid white;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      li:last-child {
+        border-right: none;
+      }
+
+      .li-logo {
+        float: left;
+        width: 33%;
+        text-align: left;
+        padding-left: 20px;
+      }
+
+      .logo-texto {
+        font-size: 40px;
+        color: white;
+        line-height: 60px;
+      }
+
+      .logo-texto-UCV {
+        font-size: 20px;
+      }
+
+      .li-saludo-nombre {
+        float: left;
+        width: 32%;
+      }
+
+      .saludo-texto {
+        font-size: 16px;
+        line-height: 60px;
+        color: white;
+      }
+
+      /* 5. Estilos del Formulario */
+
+      .li-busqueda {
+        width: auto;
+        float: right;
+      }
+
+      .form-busqueda-nombre {
+        padding-top: 14px;
+        text-align: right;
+      }
+
+      .form-busqueda-nombre input[type='text'] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        font-size: 14px;
+        height: 12px;
+      }
+
+      .btn-buscar {
+        font-size: 15px;
+        color: #7db4fd;
+        padding: 6px 8px;
+        margin-right: 12px;
+        border: none;
+        background-color: #f7fbff;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+
+      .seccion-estudiantes {
+        max-width: 100%;
+        padding-left: 30px;
+        padding-right: 50px;
+        padding-top: 10px;
+      }
+
+      .card-estudiante {
+        width: 200px;
+        height: 200px;
+        background-color: #eef2f77b;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        float: left;
+        margin: 10px;
+      }
+
+      .card-img-container {
+        height: 150px;
+        width: 150px;
+        margin: auto;
+        padding-top: 20px;
+        text-align: center;
+      }
+
+      .img-card-estudiante {
+        height: 150px;
+        width: 140px;
+        object-fit: contain;
+      }
+
+      .nombre-estudiante {
+        color: #7aa4e4;
+      }
+
+      .footer-index {
+        clear: both;
+        max-width: 95%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        font-size: 14px;
+        color: #000000;
+        background-color: #79a3e0;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <main class="contenedor-index">
+      <header>
+        <nav>
+          <ul>
+            <li class="li-logo">
+              <p class="logo-texto">
+                ATI<span class="logo-texto-UCV">[UCV]</span>
+                2025-2
+              </p>
+            </li>
+            <li class="li-saludo-nombre">
+              <p class="saludo-texto">Hola, Ronald</p>
+            </li>
+            <li class="li-busqueda">
+              <form class="form-busqueda-nombre">
+                <input
+                  type="text"
+                  placeholder="Nombre..."
+                  aria-label="Buscar en el sitio"
+                />
+                <button class="btn-buscar" type="submit">Buscar</button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section class="seccion-estudiantes">
+        <ul>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="29567199/29567199.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Ronald Herrera</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy1\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Marie Moreau</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy2\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Lyra Sterling</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy4\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Zane Kaelen</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy3\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Elara Vance</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy6\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Orion Croft</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy1\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Seraphina Roux</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy5\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Darian Thorne</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy4\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Felix Nightshade</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy2\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Juno Bellweather</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy3\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Anya Frost</span>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card-estudiante">
+              <div class="card-img-container">
+                <img
+                  class="img-card-estudiante"
+                  src="dummy6\dummy.jpg"
+                  alt="imagen de Estudiante"
+                />
+                <span class="nombre-estudiante">Corvus Blackwood</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <div style="padding-top: 40px; clear: both"></div>
+      <footer class="footer-index">
+        <p>
+          Copyright © 2025 Escuela de computación - ATI. Todos los derechos
+          reservados
+        </p>
+      </footer>
+    </main>
+  </body>
 </html>
