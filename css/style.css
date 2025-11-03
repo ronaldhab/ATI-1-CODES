@@ -8,7 +8,8 @@ body {
 }
 
 .contenedor-index {
-  max-width: 65%;
+  max-width: 60em;
+  min-width: 50em;
   font-family: Arial, sans-serif;
   margin-inline: auto;
 }
@@ -17,16 +18,15 @@ ul {
   list-style: none;
 }
 
-/* 1. Contenedor Principal (Header/Nav) */
 header {
-  max-width: 95%;
+  max-width: 60em;
+  min-width: 50em;
   background-color: #79a3e0;
   overflow: hidden;
-  border-bottom: 1px solid #79a3e0;
   height: 60px;
 }
 
-/* 2. Estilos Comunes de las "Celdas" (<li>) */
+/*Estilos Comunes de las <li>*/
 nav ul li {
   border-right: 1px solid white;
   text-align: center;
@@ -65,7 +65,7 @@ li:last-child {
   color: white;
 }
 
-/* 5. Estilos del Formulario */
+/*Estilos del Formulario */
 
 .li-busqueda {
   width: auto;
@@ -97,9 +97,10 @@ li:last-child {
 }
 
 .seccion-estudiantes {
-  max-width: 100%;
-  padding-left: 30px;
-  padding-right: 50px;
+  min-width: 50em;
+  max-width: 60em;
+  padding-left: 35px;
+  padding-right: 30px;
   padding-top: 10px;
 }
 
@@ -132,11 +133,9 @@ li:last-child {
 
 .footer-index {
   clear: both;
-  max-width: 95%;
+  max-width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
-  bottom: 0;
-  left: 0;
   text-align: center;
   font-size: 14px;
   color: #000000;
@@ -215,4 +214,30 @@ footer {
 
 .contacto-enlace:active {
   color: red;
+}
+
+/* Animaciones de las tarjetas de estudiante */
+.card-estudiante {
+  overflow: hidden;
+  transition: background-color 300ms ease, box-shadow 300ms ease,
+    transform 300ms ease;
+  will-change: background-color, transform;
+}
+
+.img-card-estudiante {
+  transition: transform 350ms ease;
+  will-change: transform;
+}
+
+.card-estudiante:hover {
+  background-color: #99c5dd;
+  transform: scale(1.05) rotate(5deg);
+}
+
+.card-estudiante:hover .img-card-estudiante {
+  transform: scale(1.05) rotate(1.5deg);
+}
+
+.card-estudiante:hover .nombre-estudiante {
+  transform: scale(1.05) rotate(1.5deg);
 }
