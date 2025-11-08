@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-body {
-  height: 100%;
-}
-
 .contenedor-index {
   max-width: 60em;
   min-width: 50em;
@@ -143,8 +139,8 @@ li:last-child {
 }
 
 /*Estilos para perfil.html*/
-.contenedor {
-  width: 60%;
+.perfil-contenedor {
+  width: 60vw;
   margin: 0 auto;
   padding: 20px;
 }
@@ -158,8 +154,8 @@ li:last-child {
 
 .estudiante-img {
   border-top-left-radius: 50px;
-  width: 200px;
-  height: 335px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -170,7 +166,7 @@ li:last-child {
   height: 332px;
   float: left;
   border: 2px solid #000000;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 .estudiante-nombre {
