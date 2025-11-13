@@ -1,11 +1,20 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-size: 16px;
 }
 
 .contenedor-index {
-  max-width: 60em;
-  min-width: 50em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
   font-family: Arial, sans-serif;
   margin-inline: auto;
 }
@@ -14,58 +23,59 @@ ul {
   list-style: none;
 }
 
+.ul-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
 header {
-  max-width: 60em;
-  min-width: 50em;
+  width: 963px;
   background-color: #79a3e0;
-  overflow: hidden;
   height: 60px;
 }
 
 /*Estilos Comunes de las <li>*/
 nav ul li {
   border-right: 1px solid white;
-  text-align: center;
-  box-sizing: border-box;
 }
 
-li:last-child {
+nav ul li:last-child {
   border-right: none;
 }
 
 .li-logo {
-  float: left;
+  display: flex;
   width: 33%;
-  text-align: left;
-  padding-left: 20px;
+  justify-content: flex-start;
 }
 
 .logo-texto {
-  font-size: 40px;
+  padding-left: 20px;
+  font-size: 2.5rem;
   color: white;
   line-height: 60px;
 }
 
 .logo-texto-UCV {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .li-saludo-nombre {
-  float: left;
-  width: 32%;
+  width: 20%;
 }
 
 .saludo-texto {
-  font-size: 16px;
+  font-size: 1em;
   line-height: 60px;
   color: white;
 }
 
 /*Estilos del Formulario */
 
-.li-busqueda {
-  width: auto;
-  float: right;
+.form-contenedor {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .form-busqueda-nombre {
@@ -74,15 +84,15 @@ li:last-child {
 }
 
 .form-busqueda-nombre input[type='text'] {
-  padding: 8px;
+  padding: 14px 5px;
   border: 1px solid #ccc;
   border-radius: 0;
-  font-size: 14px;
+  font-size: 0.875em;
   height: 12px;
 }
 
 .btn-buscar {
-  font-size: 15px;
+  font-size: 0.9375em;
   color: #7db4fd;
   padding: 6px 8px;
   margin-right: 12px;
@@ -93,19 +103,25 @@ li:last-child {
 }
 
 .seccion-estudiantes {
-  min-width: 50em;
-  max-width: 60em;
+  display: flex;
+  justify-content: center;
   padding-left: 35px;
   padding-right: 30px;
   padding-top: 10px;
 }
 
+.seccion-estudiantes ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
 .card-estudiante {
+  text-align: center;
   width: 200px;
   height: 200px;
   background-color: #eef2f77b;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  float: left;
   margin: 10px;
 }
 
@@ -119,7 +135,7 @@ li:last-child {
 
 .img-card-estudiante {
   height: 150px;
-  width: 140px;
+  width: 100%;
   object-fit: contain;
 }
 
@@ -128,28 +144,28 @@ li:last-child {
 }
 
 .footer-index {
-  clear: both;
-  max-width: 100%;
+  width: 963px;
   padding-top: 15px;
   padding-bottom: 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875em;
   color: #000000;
   background-color: #79a3e0;
 }
 
 /*Estilos para perfil.html*/
 .contenedor-perfil {
-  width: 60vw;
+  justify-content: center;
+  display: flex;
+  gap: 2px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .img-contenedor {
   width: 200px;
   height: 335px;
-  float: left;
-  margin-right: 2px;
 }
 
 .estudiante-img {
@@ -160,50 +176,52 @@ li:last-child {
 }
 
 .estudiante-info {
-  font-size: 16px;
+  display: flex;
+  flex-direction: column;
   font-family: sans-serif;
-  width: 700px;
-  height: 332px;
-  float: left;
+  font-size: 1.035em;
+  width: 660px;
+  height: 335px;
   border: 2px solid #000000;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
 }
 
 .estudiante-nombre {
-  font-size: 35px;
+  font-size: 2.1875em;
   color: orange;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  margin: 10px 8px;
+  margin-bottom: 5px;
 }
 
 .estudiante-descripcion-contenedor {
-  margin-left: 10px;
+  margin-left: 8px;
   padding-right: 10px;
 }
+
 .estudiante-descripcion {
   font-style: italic;
   font-family: sans-serif;
 }
 
 .estudiante-intereses-contenedor {
-  margin-left: 10px;
-  margin-top: 20px;
+  margin-left: 8px;
+  margin-top: 30px;
 }
 
 .estudiante-intereses td {
   padding-right: 40px;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
 }
 
 .footer-perfil {
-  margin-left: 10px;
-  clear: both;
-  font-size: 16px;
+  padding-right: 4px;
+  margin-top: 2px;
+  margin-left: 5px;
 }
 
 .contacto-enlace {
-  padding-left: 5px;
+  padding-left: 1px;
+  padding-right: 2px;
   text-decoration: none;
   color: orange;
 }
@@ -237,3 +255,388 @@ li:last-child {
 .card-estudiante:hover .nombre-estudiante {
   transform: scale(1.05) rotate(1.5deg);
 }
+
+/******************Media Queries******************/
+
+/*---320px — 480px: Dispositivos móviles---*/
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /*Estilos para index.html*/
+  header {
+    width: 100%;
+    background-color: #79a3e0;
+    height: 60px;
+  }
+
+  nav ul li {
+    border-right: none;
+  }
+
+  .contenedor-index {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .li-logo {
+    width: 50%;
+  }
+
+  .logo-texto {
+    padding-left: 10px;
+    font-size: 1.45rem;
+    color: white;
+    line-height: 60px;
+  }
+
+  .logo-texto-UCV {
+    font-size: 0.8rem;
+  }
+
+  .li-saludo-nombre {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  .saludo-texto {
+    font-size: 1.2em;
+    line-height: 60px;
+    color: white;
+  }
+
+  .form-contenedor {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    background-color: #e2e9f3;
+    padding: 10px 0;
+    z-index: 10;
+  }
+
+  .form-busqueda-nombre {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .form-busqueda-nombre input[type='text'] {
+    border: 1px solid #ccc;
+    font-size: 0.8rem;
+  }
+
+  .btn-buscar {
+    font-size: 0.8rem;
+  }
+
+  .seccion-estudiantes {
+    padding-top: 80px;
+  }
+
+  .seccion-estudiantes ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .footer-index {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  /*Perfil.html*/
+  .img-contenedor {
+    min-width: 80px;
+    max-width: 90px;
+    height: 160px;
+  }
+
+  .estudiante-img {
+    border-top-left-radius: 25px;
+  }
+
+  .estudiante-info {
+    max-width: 220px;
+    min-width: 180px;
+    height: 159px;
+    font-size: 6.65px;
+    border: 0.1px solid #000000;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .estudiante-nombre {
+    margin-top: 8px;
+    margin-left: 5px;
+  }
+
+  .estudiante-descripcion-contenedor {
+    margin-left: 5px;
+  }
+
+  .estudiante-intereses-contenedor {
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  .estudiante-intereses td {
+    padding-bottom: 0;
+    padding-right: 10px;
+  }
+
+  .footer-perfil {
+    margin-left: 3px;
+  }
+
+  .contacto-enlace {
+    padding-left: 1px;
+    padding-right: 20px;
+  }
+}
+
+/*---481px — 768px: iPads, tablets---*/
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /*Estilos para index.html*/
+  header {
+    width: 100%;
+    height: 60px;
+  }
+
+  .contenedor-index {
+    width: 100%;
+    font-size: 12.8px;
+  }
+
+  .li-logo {
+    width: 50%;
+  }
+
+  .logo-texto {
+    padding-left: 10px;
+    font-size: 1.5rem;
+    color: white;
+    line-height: 60px;
+  }
+
+  .logo-texto-UCV {
+    font-size: 0.82rem;
+  }
+
+  .li-saludo-nombre {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding-right: 20px;
+  }
+
+  .saludo-texto {
+    font-size: 1.25em;
+    line-height: 60px;
+    color: white;
+  }
+
+  .form-contenedor {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    justify-content: flex-end;
+    background-color: #e2e9f3;
+    padding: 10px 0;
+    z-index: 10;
+  }
+
+  .form-busqueda-nombre {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .form-busqueda-nombre input[type='text'] {
+    border: 1px solid #ccc;
+    font-size: 0.8rem;
+  }
+
+  .btn-buscar {
+    font-size: 0.8rem;
+  }
+
+  .seccion-estudiantes {
+    padding-top: 80px;
+    width: 100%;
+  }
+
+  .seccion-estudiantes ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-index {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  /* Perfil.html */
+  .img-contenedor {
+    min-width: 100px;
+    max-width: 120px;
+    min-height: 160px;
+    max-height: 200px;
+  }
+
+  .estudiante-img {
+    border-top-left-radius: 30px;
+  }
+
+  .estudiante-info {
+    min-width: 320px;
+    max-width: 345px;
+    min-height: 158px;
+    max-height: 199px;
+    font-size: 8.5px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .estudiante-intereses-contenedor {
+    margin-top: 19px;
+  }
+}
+
+/* 769px — 1024px: pantallas pequeñas, ordenadores portátiles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /*Estilos para index.html*/
+  header {
+    width: 100%;
+  }
+
+  .contenedor-index {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .logo-texto {
+    font-size: 2rem;
+    color: white;
+    line-height: 60px;
+  }
+
+  .logo-texto-UCV {
+    font-size: 1rem;
+  }
+
+  .saludo-texto {
+    font-size: 1.25rem;
+    line-height: 60px;
+    color: white;
+  }
+
+  .form-busqueda-nombre {
+    text-align: center;
+  }
+
+  .form-busqueda-nombre input[type='text'] {
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+  }
+
+  .btn-buscar {
+    font-size: 0.9rem;
+  }
+
+  .seccion-estudiantes ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-index {
+    width: 100%;
+    font-size: 1.25rem;
+  }
+
+  /* Perfil.html */
+  .img-contenedor {
+    min-width: 100px;
+    max-width: 160px;
+    min-height: 160px;
+    max-height: 240px;
+  }
+
+  .estudiante-img {
+    border-top-left-radius: 40px;
+  }
+
+  .estudiante-info {
+    min-width: 480px;
+    max-width: 500px;
+    min-height: 158px;
+    max-height: 239px;
+    font-size: 12px;
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  .estudiante-intereses-contenedor {
+    margin-top: 19px;
+  }
+}
+
+/*1025px — 1200px: pantallas grandes, ordenadores de escritorio*/
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  /*Estilos para index.html*/
+  header {
+    width: 100%;
+  }
+
+  .contenedor-index {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .logo-texto {
+    /* padding-left: 10px; */
+    font-size: 2rem;
+    color: white;
+    line-height: 60px;
+  }
+
+  .logo-texto-UCV {
+    font-size: 1rem;
+  }
+
+  .saludo-texto {
+    font-size: 1.25rem;
+    line-height: 60px;
+    color: white;
+  }
+
+  .form-busqueda-nombre {
+    text-align: center;
+  }
+
+  .form-busqueda-nombre input[type='text'] {
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+  }
+
+  .btn-buscar {
+    font-size: 0.9rem;
+  }
+
+  .footer-index {
+    width: 100%;
+    font-size: 1.25rem;
+  }
+
+  /* Perfil.html */
+  .img-contenedor {
+    min-width: 200px;
+    max-width: 250px;
+    min-height: 160px;
+    max-height: 335px;
+  }
+
+  .estudiante-info {
+    min-width: 450px;
+    max-width: 660px;
+    min-height: 258px;
+    max-height: 335px;
+    font-size: 16.5845px;
+  }
+}
+
+/********************************************************/

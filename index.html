@@ -11,7 +11,7 @@
     <main class="contenedor-index">
       <header>
         <nav>
-          <ul>
+          <ul class="ul-nav">
             <li class="li-logo">
               <p class="logo-texto">
                 ATI<span class="logo-texto-UCV">[UCV]</span>
@@ -22,14 +22,16 @@
               <p class="saludo-texto">Hola, Ronald</p>
             </li>
             <li class="li-busqueda">
-              <form class="form-busqueda-nombre">
-                <input
-                  type="text"
-                  placeholder="Nombre..."
-                  aria-label="Buscar en el sitio"
-                />
-                <button class="btn-buscar" type="submit">Buscar</button>
-              </form>
+              <div class="form-contenedor">
+                <form class="form-busqueda-nombre">
+                  <input
+                    type="text"
+                    placeholder="Nombre..."
+                    aria-label="Buscar en el sitio"
+                  />
+                  <input class="btn-buscar" type="submit" value="Buscar" />
+                </form>
+              </div>
             </li>
           </ul>
         </nav>
@@ -39,11 +41,22 @@
           <li>
             <div class="card-estudiante">
               <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="29567199/29567199.jpg"
-                  alt="imagen de Estudiante"
-                />
+                <picture>
+                  <source
+                    media="(max-width: 769px)"
+                    srcset="29567199/29567199Pequena.jpg"
+                  />
+                  <source
+                    media="(min-width: 770px)"
+                    srcset="29567199/29567199Grande.jpg"
+                  />
+                  <img
+                    class="img-card-estudiante"
+                    src="29567199/29567199Grande.jpg"
+                    alt="imagen de Estudiante"
+                  />
+                </picture>
+
                 <span class="nombre-estudiante">Ronald Herrera</span>
               </div>
             </div>

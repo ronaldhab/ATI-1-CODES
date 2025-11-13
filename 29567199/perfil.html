@@ -10,17 +10,25 @@
   <body>
     <main class="contenedor-perfil">
       <div class="img-contenedor">
-        <img class="estudiante-img" src="29567199.jpg" alt="Ronald Herrera" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="29567199Pequena.jpg" />
+          <source media="(min-width: 769px)" srcset="29567199Grande.jpg" />
+          <img
+            class="estudiante-img"
+            src="29567199Grande.jpg"
+            alt="Ronald Herrera"
+          />
+        </picture>
       </div>
       <div class="estudiante-info">
         <h1 class="estudiante-nombre">Ronald Herrera</h1>
         <div class="estudiante-descripcion-contenedor">
-          <em class="estudiante-descripcion"
-            >Estudiante de la licenciatura de computación de la UCV. Apasionado
+          <p class="estudiante-descripcion">
+            Estudiante de la licenciatura de computación de la UCV. Apasionado
             por el mundo de las redes y el desarrollo web. Actualmente me
             encuentro ampliando mis conocimientos y habilidades en estas áreas
-            para poder llevar a cabo proyectos futuros.</em
-          >
+            para poder llevar a cabo proyectos futuros.
+          </p>
         </div>
         <div class="estudiante-intereses-contenedor">
           <table class="estudiante-intereses">
