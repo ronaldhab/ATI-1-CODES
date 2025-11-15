@@ -1,0 +1,16 @@
+const perfil = {	
+	"nombre":"Ronald Herrera",
+	"descripcion":"Estudiante de la licenciatura de computación de la UCV. Apasionado
+            por el mundo de las redes y el desarrollo web. Actualmente me
+            encuentro ampliando mis conocimientos y habilidades en estas áreas
+            para poder llevar a cabo proyectos futuros.",
+	"color": "Morado",
+	"libro": ["Harry Potter"],
+	"musica": ["Rock alternativo"],
+	"video_juego": ["Baldurs Gate 3 y The Witcher 3."],
+	"lenguajes": ["c++", "python", "java", "javascript"],
+	"email":"ronald.alfredo.hb@gmail.com",
+	"ci": "29567199",
+	"genero":"masculino",
+	"fecha_nacimiento":"07/03/2002"
+}
