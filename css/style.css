@@ -50,6 +50,7 @@ nav ul li:last-child {
 }
 
 .logo-texto {
+  display: flex;
   padding-left: 20px;
   font-size: 2.5rem;
   color: white;
@@ -57,6 +58,8 @@ nav ul li:last-child {
 }
 
 .logo-texto-UCV {
+  padding-top: 4px;
+  padding-right: 10px;
   font-size: 1.25rem;
 }
 

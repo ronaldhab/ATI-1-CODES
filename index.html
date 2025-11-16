@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ATI[UCV] 2025-2</title>
+    <title></title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="conf/configES.json" defer></script>
+    <script type="text/javascript" src="js/index.js" defer></script>
   </head>
   <body>
     <main class="contenedor-index">
@@ -13,23 +15,25 @@
         <nav>
           <ul class="ul-nav">
             <li class="li-logo">
-              <p class="logo-texto">
-                ATI<span class="logo-texto-UCV">[UCV]</span>
-                2025-2
-              </p>
+              <div class="logo-texto">
+                <p id="nombre-pag"></p>
+                <span class="logo-texto-UCV"></span>
+                <p id="periodo"></p>
+              </div>
             </li>
             <li class="li-saludo-nombre">
-              <p class="saludo-texto">Hola, Ronald</p>
+              <p class="saludo-texto"><span id="saludo"></span>, Ronald</p>
             </li>
             <li class="li-busqueda">
               <div class="form-contenedor">
                 <form class="form-busqueda-nombre">
                   <input
+                    id="input-nombre"
                     type="text"
-                    placeholder="Nombre..."
+                    placeholder=""
                     aria-label="Buscar en el sitio"
                   />
-                  <input class="btn-buscar" type="submit" value="Buscar" />
+                  <input class="btn-buscar" type="submit" value="" />
                 </form>
               </div>
             </li>
@@ -42,154 +46,15 @@
             <div class="card-estudiante">
               <div class="card-img-container">
                 <picture>
-                  <source
-                    media="(max-width: 769px)"
-                    srcset="29567199/29567199Pequena.jpg"
-                  />
-                  <source
-                    media="(min-width: 770px)"
-                    srcset="29567199/29567199Grande.jpg"
-                  />
+                  <source media="(max-width: 769px)" srcset="" />
+                  <source media="(min-width: 770px)" srcset="" />
                   <img
                     class="img-card-estudiante"
-                    src="29567199/29567199Grande.jpg"
+                    src=""
                     alt="imagen de Estudiante"
                   />
                 </picture>
-
-                <span class="nombre-estudiante">Ronald Herrera</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy1\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Marie Moreau</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy2\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Lyra Sterling</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy4\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Zane Kaelen</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy3\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Elara Vance</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy6\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Orion Croft</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy1\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Seraphina Roux</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy5\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Darian Thorne</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy4\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Felix Nightshade</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy2\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Juno Bellweather</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy3\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Anya Frost</span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="card-estudiante">
-              <div class="card-img-container">
-                <img
-                  class="img-card-estudiante"
-                  src="dummy6\dummy.jpg"
-                  alt="imagen de Estudiante"
-                />
-                <span class="nombre-estudiante">Corvus Blackwood</span>
+                <span class="nombre-estudiante"></span>
               </div>
             </div>
           </li>
@@ -197,10 +62,7 @@
       </section>
       <div style="padding-top: 40px; clear: both"></div>
       <footer class="footer-index">
-        <p>
-          Copyright © 2025 Escuela de computación - ATI. Todos los derechos
-          reservados
-        </p>
+        <p id="copyright"></p>
       </footer>
     </main>
   </body>
