@@ -120,9 +120,12 @@ nav ul li:last-child {
 }
 
 .card-estudiante {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 200px;
-  height: 200px;
+  height: 220px;
   background-color: #eef2f77b;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   margin: 10px;
@@ -132,18 +135,22 @@ nav ul li:last-child {
   height: 150px;
   width: 150px;
   margin: auto;
-  padding-top: 20px;
-  text-align: center;
 }
 
 .img-card-estudiante {
-  height: 150px;
+  height: 100%;
   width: 100%;
   object-fit: contain;
 }
 
 .nombre-estudiante {
+  display: inline-block;
   color: #7aa4e4;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer-index {

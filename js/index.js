@@ -1,3 +1,4 @@
+/***************************Configuraciones***************************/
 const [nombre, siglas, periodo] = config['sitio'];
 tituloIndex = nombre + siglas + ' ' + periodo;
 
@@ -27,7 +28,7 @@ let lenguajes = document.getElementById('lenguajes');
 let contacto = document.getElementById('texto-contacto');
 let enlace = document.getElementsByClassName('contacto-enlace')[0];
 
-/******Validaciones********/
+/*-----Validaciones-----*/
 // Index.html
 nombrePag && (nombrePag.innerHTML = nombre);
 nombrePag && (document.title = tituloIndex);
@@ -50,4 +51,33 @@ lenguajes && (lenguajes.innerHTML = config['lenguajes']);
 contacto && (contacto.innerHTML = textoContacto);
 enlace && (enlace.innerHTML = enlaceContacto);
 
-/****************************/
+/*----------------------------*/
+/****************************************************************************/
+
+/*****Lista dinámica de estudiantes******/
+
+const ul = document.querySelector('.lista-estudiantes');
+perfiles.forEach((perfil) => {
+  const li = document.createElement('li');
+  li.className = 'card';
+  li.innerHTML = `<div class="card-estudiante" data-nombre="${perfil.nombre}">
+              <div class="card-img-container">
+              <picture>
+                  <source media="(max-width: 769px)" srcset="${
+                    perfil.imagen
+                  }" />
+                  <source media="(min-width: 770px)" srcset="${perfil.imagen
+                    .replace('Pequena.jpg', 'Grande.jpg')
+                    .trim()}" />
+                  <img
+                    class="img-card-estudiante"
+                    src="${perfil.imagen}"
+                    alt="imagen de Estudiante"
+                  />
+                </picture>
+                <span class="nombre-estudiante"> ${perfil.nombre}</span>
+              </div>
+            </div>`;
+  ul.appendChild(li);
+});
+/******************************************/
