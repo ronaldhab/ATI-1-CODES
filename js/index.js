@@ -92,6 +92,7 @@ window.onload = function () {
 
   /**********************Perfiles dinamicos************************************/
   if (nombreEstudiante != null) {
+    document.title = perfil['nombre'];
     nombreEstudiante.innerHTML = perfil['nombre'];
     descipcionEstudiante.innerHTML = perfil['descripcion'];
 
