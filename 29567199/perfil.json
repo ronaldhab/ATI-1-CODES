@@ -1,9 +1,6 @@
 const perfil = {	
 	"nombre":"Ronald Herrera",
-	"descripcion":"Estudiante de la licenciatura de computación de la UCV. Apasionado
-            por el mundo de las redes y el desarrollo web. Actualmente me
-            encuentro ampliando mis conocimientos y habilidades en estas áreas
-            para poder llevar a cabo proyectos futuros.",
+	"descripcion":"Estudiante de la licenciatura de computación de la UCV. Apasionado por el mundo de las redes y el desarrollo web. Actualmente me encuentro ampliando mis conocimientos y habilidades en estas áreas para poder llevar a cabo proyectos futuros.",
 	"color": "Morado",
 	"libro": ["Harry Potter"],
 	"musica": ["Rock alternativo"],

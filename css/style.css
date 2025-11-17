@@ -189,7 +189,7 @@ nav ul li:last-child {
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
-  font-size: 1.035em;
+  font-size: 0.96rem;
   width: 660px;
   height: 335px;
   border: 2px solid #000000;
@@ -367,7 +367,7 @@ nav ul li:last-child {
     max-width: 220px;
     min-width: 180px;
     height: 159px;
-    font-size: 6.65px;
+    font-size: 5.7px;
     border: 0.1px solid #000000;
     box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
   }
@@ -498,7 +498,7 @@ nav ul li:last-child {
     max-width: 345px;
     min-height: 158px;
     max-height: 199px;
-    font-size: 8.5px;
+    font-size: 7.8px;
     border: 1px solid #000000;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
   }
@@ -575,7 +575,7 @@ nav ul li:last-child {
     max-width: 500px;
     min-height: 158px;
     max-height: 239px;
-    font-size: 12px;
+    font-size: 10.8px;
     border: 1px solid #000000;
     box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
   }
@@ -645,7 +645,7 @@ nav ul li:last-child {
     max-width: 660px;
     min-height: 258px;
     max-height: 335px;
-    font-size: 16.5845px;
+    /* font-size: 15.3px; */
   }
 }
 

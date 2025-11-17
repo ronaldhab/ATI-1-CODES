@@ -7,14 +7,23 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
     <link rel="stylesheet" href="../css/style.css" />
     <script type="text/javascript" src="conf/configES.json" defer></script>
+    <script type="text/javascript" src="datos/index.json" defer></script>
     <script type="text/javascript" src="js/index.js" defer></script>
   </head>
   <body>
     <main class="contenedor-perfil">
       <div class="img-contenedor">
         <picture>
-          <source media="(max-width: 768px)" srcset="" />
-          <source media="(min-width: 769px)" srcset="" />
+          <source
+            id="source-pequena-perfil"
+            media="(max-width: 768px)"
+            srcset=""
+          />
+          <source
+            id="source-grande-perfil"
+            media="(min-width: 769px)"
+            srcset=""
+          />
           <img class="estudiante-img" src="" alt="" />
         </picture>
       </div>
@@ -52,10 +61,7 @@
             <tr>
               <td id="texto-contacto"></td>
               <td>
-                <a
-                  class="contacto-enlace"
-                  href="mailto:?subject=Contacto desde el perfil&body=Hola%20%2C%0A%0AMe%20gustar%C3%ADa%20ponerme%20en%20contacto%20contigo."
-                ></a>
+                <a class="contacto-enlace" href=""></a>
               </td>
             </tr>
           </table>
