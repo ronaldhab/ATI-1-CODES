@@ -86,7 +86,7 @@ nav ul li:last-child {
   text-align: right;
 }
 
-.form-busqueda-nombre input[type='text'] {
+.form-busqueda-nombre input[type='search'] {
   padding: 14px 5px;
   border: 1px solid #ccc;
   border-radius: 0;

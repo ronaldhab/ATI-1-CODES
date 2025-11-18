@@ -1,5 +1,58 @@
+// Funcion para agregar lang a la url
+function agregarParametroLang() {
+  const urlActual = window.location.href;
+
+  const url = new URL(urlActual);
+
+  if (!url.searchParams.get('lang')) {
+    url.searchParams.set('lang', 'en');
+    window.history.replaceState({}, '', url.toString());
+  }
+}
+
+agregarParametroLang();
+
+/***************************Cambiar idioma*********************************/
+function changeLanguage(newLang) {
+  // Array de idiomas válidos
+  const langs = ['ES', 'EN', 'PT'];
+
+  if (langs.find((elem) => elem === newLang.toUpperCase())) {
+    // Si se encuentra el idioma en la lista de idiomas válidos
+    let urlLang = `conf/config${newLang.toUpperCase()}.json`;
+
+    let jsonFileLangScript = document.createElement('script');
+    jsonFileLangScript.src = urlLang;
+    jsonFileLangScript.type = 'text/javascript';
+    jsonFileLangScript.defer = true;
+    document.head.appendChild(jsonFileLangScript);
+    console.log(urlLang);
+  } else {
+    // Si no se encuentra o no es válido, usar 'es' por defecto
+    let urlLang = `conf/configES.json`;
+    let jsonFileLangScript = document.createElement('script');
+    jsonFileLangScript.src = urlLang;
+    jsonFileLangScript.type = 'text/javascript';
+    jsonFileLangScript.defer = true;
+    document.head.appendChild(jsonFileLangScript);
+    console.log(urlLang);
+  }
+}
+
+// función para obtener el lenguaje de la URL
+function getUrlLanguage() {
+  let paramsLang = new URLSearchParams(window.location.search);
+
+  let newLang = paramsLang.get('lang');
+
+  changeLanguage(newLang);
+}
+
+getUrlLanguage();
+/***********************************************************************/
+
+/***************************Configuraciones****************************/
 window.onload = function () {
-  /***************************Configuraciones***************************/
   const [nombre, siglas, periodo] = config['sitio'];
   tituloIndex = nombre + siglas + ' ' + periodo;
 
@@ -58,6 +111,11 @@ window.onload = function () {
 
   /****************Lista dinámica de estudiantes*******************************/
   if (nombrePag) {
+    let langPerfil = '';
+    let urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('lang')) {
+      langPerfil = urlParams.get('lang').toLowerCase();
+    }
     const ul = document.querySelector('.lista-estudiantes');
     perfiles.forEach((perfilCard) => {
       const li = document.createElement('li');
@@ -66,7 +124,7 @@ window.onload = function () {
         perfilCard.nombre
       }">
               <div class="card-img-container">
-              <a href="/perfil.html?cedula=${perfilCard.ci}">
+              <a href="/perfil.html?lang=${langPerfil}&cedula=${perfilCard.ci}">
               <picture>
                   <source media="(max-width: 769px)" srcset="${
                     perfilCard.imagen
@@ -123,6 +181,8 @@ window.onload = function () {
     imgPerfil.src = urlImg;
     imgPerfil.alt = `imagen de ${perfil['nombre']}`;
   }
+
+  /***************************************************************************/
 };
 
 // Función para crear el script del json

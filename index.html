@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title data-lang="sitio"></title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="conf/configES.json" defer></script>
     <script type="text/javascript" src="datos/index.json" defer></script>
     <script type="text/javascript" src="js/index.js" defer></script>
   </head>
@@ -23,19 +22,27 @@
               </div>
             </li>
             <li class="li-saludo-nombre">
-              <p class="saludo-texto"><span id="saludo"></span>, Ronald</p>
+              <p data-lang="saludo" class="saludo-texto">
+                <span id="saludo"></span>, Ronald
+              </p>
             </li>
             <li class="li-busqueda">
               <div class="form-contenedor">
                 <form class="form-busqueda-nombre">
                   <input
+                    data-lang="nombre"
                     id="input-nombre"
-                    type="text"
+                    type="search"
                     placeholder=""
                     aria-label="Buscar en el sitio"
                   />
-                  
-                  <input class="btn-buscar" type="submit" value="" />
+
+                  <input
+                    data-lang="buscar"
+                    class="btn-buscar"
+                    type="submit"
+                    value=""
+                  />
                 </form>
               </div>
             </li>
@@ -43,11 +50,10 @@
         </nav>
       </header>
       <section class="seccion-estudiantes">
-        <ul class="lista-estudiantes">
-        </ul>
+        <ul class="lista-estudiantes"></ul>
       </section>
       <div style="padding-top: 40px; clear: both"></div>
-      <footer class="footer-index">
+      <footer data-lang="copyright" class="footer-index">
         <p id="copyright"></p>
       </footer>
     </main>
