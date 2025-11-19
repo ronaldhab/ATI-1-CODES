@@ -5,7 +5,7 @@ function agregarParametroLang() {
   const url = new URL(urlActual);
 
   if (!url.searchParams.get('lang')) {
-    url.searchParams.set('lang', 'en');
+    url.searchParams.set('lang', 'es');
     window.history.replaceState({}, '', url.toString());
   }
 }
@@ -26,7 +26,6 @@ function changeLanguage(newLang) {
     jsonFileLangScript.type = 'text/javascript';
     jsonFileLangScript.defer = true;
     document.head.appendChild(jsonFileLangScript);
-    console.log(urlLang);
   } else {
     // Si no se encuentra o no es válido, usar 'es' por defecto
     let urlLang = `conf/configES.json`;
@@ -35,11 +34,10 @@ function changeLanguage(newLang) {
     jsonFileLangScript.type = 'text/javascript';
     jsonFileLangScript.defer = true;
     document.head.appendChild(jsonFileLangScript);
-    console.log(urlLang);
   }
 }
 
-// función para obtener el lenguaje de la URL
+// función para obtener el lenguaje de la URL y cambiar el idioma
 function getUrlLanguage() {
   let paramsLang = new URLSearchParams(window.location.search);
 
@@ -50,6 +48,23 @@ function getUrlLanguage() {
 
 getUrlLanguage();
 /***********************************************************************/
+
+// Función para crear el script del json de perfil
+function detallesPerfil() {
+  let params = new URLSearchParams(document.location.search);
+  let cedula = params.get('cedula');
+  if (!cedula) return;
+  const url = `${cedula}/perfil.json`;
+  const jsonFileScript = document.createElement('script');
+  jsonFileScript.src = url;
+  jsonFileScript.type = 'text/javascript';
+  jsonFileScript.defer = true;
+  document.head.appendChild(jsonFileScript);
+
+  console.log();
+}
+
+detallesPerfil();
 
 /***************************Configuraciones****************************/
 window.onload = function () {
@@ -183,21 +198,64 @@ window.onload = function () {
   }
 
   /***************************************************************************/
+
+  /*******************************Buscador************************************/
+  const cartas = document.querySelectorAll('.card');
+  const mensajeNoEncontrado = document.querySelector('.mensaje-no-encontrado');
+
+  // Funcion para eliminar acentos
+  const normalizar = (texto) => {
+    return texto
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  };
+
+  document.addEventListener('keyup', (e) => {
+    if (e.target.matches('.buscador')) {
+      const textoBusqueda = normalizar(e.target.value.trim());
+      let cartasVisibles = 0; // 1. Iniciamos el contador
+
+      cartas.forEach((carta) => {
+        const coincide = normalizar(carta.textContent).includes(textoBusqueda);
+
+        if (coincide) {
+          carta.classList.remove('filter');
+          cartasVisibles++; // 2. Si coinciden los strings, sumamos 1 al contador
+        } else {
+          carta.classList.add('filter');
+        }
+      });
+
+      // 3. Verificamos el contador al final del ciclo
+      if (cartasVisibles === 0) {
+        //--->Si no hay coincidencias se muestra el mensaje
+        mensajeNoEncontrado.textContent =
+          config['no_encontrado'] + textoBusqueda;
+
+        mensajeNoEncontrado.classList.remove('filter');
+      } else {
+        //--->Si hay coincidencias se oculta el mensaje
+        mensajeNoEncontrado.classList.add('filter');
+      }
+    }
+  });
+
+  // Selección del input search
+  let inputBuscador = document.querySelector('.buscador');
+
+  if (nombrePag) {
+    //----->nombrePag es usado como validacion para saber si estoy en index o en perfil
+    inputBuscador.addEventListener('input', (e) => {
+      //--->Capturamos el evento input para mostrar las cards de los estudiantes nuevamente
+      if (e.target.value.trim() === '') {
+        mensajeNoEncontrado.classList.add('filter');
+
+        cartas.forEach((carta) => {
+          carta.classList.remove('filter');
+        });
+      }
+    });
+  }
+  /***************************************************************************/
 };
-
-// Función para crear el script del json
-function detallesPerfil() {
-  let params = new URLSearchParams(document.location.search);
-  let cedula = params.get('cedula');
-  if (!cedula) return;
-  const url = `${cedula}/perfil.json`;
-  const jsonFileScript = document.createElement('script');
-  jsonFileScript.src = url;
-  jsonFileScript.type = 'text/javascript';
-  jsonFileScript.defer = true;
-  document.head.appendChild(jsonFileScript);
-
-  console.log();
-}
-
-detallesPerfil();

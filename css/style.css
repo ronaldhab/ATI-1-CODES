@@ -86,7 +86,7 @@ nav ul li:last-child {
   text-align: right;
 }
 
-.form-busqueda-nombre input[type='search'] {
+.buscador {
   padding: 14px 5px;
   border: 1px solid #ccc;
   border-radius: 0;
@@ -116,6 +116,7 @@ nav ul li:last-child {
 .seccion-estudiantes ul {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  min-height: 586px;
   gap: 6px;
 }
 
@@ -267,7 +268,27 @@ nav ul li:last-child {
   transform: scale(1.05) rotate(1.5deg);
 }
 
-/******************Media Queries******************/
+/* Filtro para la busqueda */
+.filter {
+  display: none;
+  /* visibility: hidden;
+  opacity: 0;
+  order: 1; */
+}
+
+/* Estilos del mensaje de no encontrado */
+.mensaje-no-encontrado {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  font-size: 1.3em;
+  color: #7db4fd;
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+}
 
 /******************Media Queries******************/
 
