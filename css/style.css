@@ -113,7 +113,7 @@ nav ul li:last-child {
   padding-top: 10px;
 }
 
-.seccion-estudiantes ul {
+.lista-estudiantes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   min-height: 586px;
@@ -193,7 +193,6 @@ nav ul li:last-child {
 .estudiante-info {
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
   font-size: 1.04rem;
   width: 660px;
   height: 335px;
@@ -275,9 +274,6 @@ nav ul li:last-child {
 /* Filtro para la busqueda */
 .filter {
   display: none;
-  /* visibility: hidden;
-  opacity: 0;
-  order: 1; */
 }
 
 /* Estilos del mensaje de no encontrado */
