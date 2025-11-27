@@ -203,7 +203,7 @@ nav ul li:last-child {
 
 .estudiante-nombre {
   font-size: 2.1875em;
-  color: orange;
+  color: rgb(228, 120, 11);
   margin: 10px 8px;
   margin-bottom: 5px;
 }
@@ -238,7 +238,7 @@ nav ul li:last-child {
   padding-left: 1px;
   padding-right: 2px;
   text-decoration: none;
-  color: orange;
+  color: rgb(189, 75, 26);
 }
 
 .contacto-enlace:active {
