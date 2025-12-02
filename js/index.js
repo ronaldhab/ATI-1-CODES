@@ -53,15 +53,33 @@ getUrlLanguage();
 function detallesPerfil() {
   let params = new URLSearchParams(document.location.search);
   let cedula = params.get('cedula');
-  if (!cedula) return;
+
+  if (!cedula && this.location.pathname.endsWith('index.html')) {
+    return;
+  } else if (!cedula) {
+    document.body.innerHTML =
+      '<h2>No pudimos encontrar los datos del perfil 😥</h2>';
+    console.log(
+      'El parámetro de cédula no fue proporcionado en la URL:',
+      this.location
+    );
+    return;
+  }
+
+  const perfilExiste = perfiles.find((p) => p.ci === cedula);
+
+  if (!perfilExiste) {
+    document.body.innerHTML = `<h2>No encontramos un perfil para la cédula ${cedula} 😥</h2>`;
+    console.log(`Cédula ${cedula} no encontrada en el array "perfiles".`);
+    return;
+  }
+
   const url = `${cedula}/perfil.json`;
   const jsonFileScript = document.createElement('script');
   jsonFileScript.src = url;
   jsonFileScript.type = 'text/javascript';
   jsonFileScript.defer = true;
   document.head.appendChild(jsonFileScript);
-
-  console.log();
 }
 
 detallesPerfil();
