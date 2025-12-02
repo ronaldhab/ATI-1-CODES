@@ -1,12 +1,12 @@
 // Funcion para agregar lang a la url
 function agregarParametroLang() {
-  const urlActual = window.location.href;
+  const urlActual = this.location.href;
 
   const url = new URL(urlActual);
 
   if (!url.searchParams.get('lang')) {
     url.searchParams.set('lang', 'es');
-    window.history.replaceState({}, '', url.toString());
+    this.history.replaceState({}, '', url.toString());
   }
 }
 
@@ -39,6 +39,7 @@ function changeLanguage(newLang) {
 
 // función para obtener el lenguaje de la URL y cambiar el idioma
 function getUrlLanguage() {
+  'use strict';
   let paramsLang = new URLSearchParams(window.location.search);
 
   let newLang = paramsLang.get('lang');
@@ -145,7 +146,7 @@ window.onload = function () {
   /****************Lista dinámica de estudiantes*******************************/
   if (nombrePag) {
     let langPerfil = '';
-    let urlParams = new URLSearchParams(window.location.search);
+    let urlParams = new URLSearchParams(this.location.search);
     if (urlParams.get('lang')) {
       langPerfil = urlParams.get('lang').toLowerCase();
     }
