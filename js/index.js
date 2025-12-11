@@ -56,13 +56,13 @@ function detallesPerfil() {
   let cedula = params.get('cedula');
   const perfilExiste = perfiles.find((p) => p.ci === cedula);
 
-  if (!cedula && this.location.pathname.endsWith('index.html')) {
+  if (!this.location.pathname.endsWith('perfil.html')) {
     return;
-  } else if (!cedula | !perfilExiste) {
+  } else if (!cedula || !perfilExiste) {
     document.body.innerHTML =
       '<h2>No pudimos encontrar los datos del perfil 😥</h2>';
     console.log(
-      'El parámetro de cédula no fue proporcionado en la URL:',
+      'El parametro de cedula es incorrecto o no fue proporcionado en la URL:',
       this.location
     );
     return;
