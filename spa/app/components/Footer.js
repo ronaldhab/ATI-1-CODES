@@ -1,5 +1,5 @@
-export function Footer(copyright) {
+export function Footer(data) {
   return `<footer data-lang="copyright" class="footer-index">
-        <p id="copyright">${copyright}</p>
+        <p id="copyright">${data['copyRight']}</p>
       </footer>`;
 }

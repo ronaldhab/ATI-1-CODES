@@ -212,7 +212,7 @@ window.onload = function () {
   /***************************************************************************/
 
   /*******************************Buscador************************************/
-  const cartas = document.querySelectorAll('.card');
+  const cartas = document.querySelectorAll('.card-estudiante');
   const mensajeNoEncontrado = document.querySelector('.mensaje-no-encontrado');
 
   // Funcion para eliminar acentos

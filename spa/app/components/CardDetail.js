@@ -1,18 +1,27 @@
-export function CardDetail(perfil, detalles, imagenes, lang){
-return `<main class="contenedor-perfil">
+export function CardDetail(perfil, lang) {
+  const imagenes = sessionStorage.getItem('imagenes')
+    ? JSON.parse(sessionStorage.getItem('imagenes'))
+    : {};
+
+  const contactoCompleto = lang['email'].split(/(?=\[email\])/);
+  let textoContacto = contactoCompleto[0];
+
+  return `<main class="contenedor-perfil">
       <div class="img-contenedor">
         <picture>
           <source
             id="source-pequena-perfil"
             media="(max-width: 768px)"
-            srcset="${imagenes.find(detalles.img)}"
+            srcset="public/${imagenes[`${perfil['ci']}`]}"
           />
           <source
             id="source-grande-perfil"
             media="(min-width: 769px)"
-            srcset="${imagenes.find(detalles.img)}"
+            srcset="public/${imagenes[`${perfil['ci']}`]}"
           />
-          <img class="estudiante-img" src="${imagenes.find(detalles.img)}" alt="Imagen de ${perfil.nombre}" />
+          <img class="estudiante-img" src="public/${
+            imagenes[`${perfil['ci']}`]
+          }" alt="Imagen de ${perfil.nombre}" />
         </picture>
       </div>
       <div class="estudiante-info">
@@ -35,25 +44,33 @@ return `<main class="contenedor-perfil">
               <td id="respuesta-musica">${perfil['musica']}</td>
             </tr>
             <tr>
-              <td data-lang="videojuego" id="videojuego">${lang['video_juego']}</td>
+              <td data-lang="videojuego" id="videojuego">${
+                lang['video_juego']
+              }</td>
               <td id="respuesta-videojuego">${perfil['video_juego']}</td>
             </tr>
             <tr>
               <td><strong id="lenguajes">${lang['lenguajes']}</strong></td>
-              <td><strong id="respuesta-lenguajes">${perfil['lenguajes']}</strong></td>
+              <td><strong id="respuesta-lenguajes">${
+                perfil['lenguajes']
+              }</strong></td>
             </tr>
           </table>
         </div>
         <footer class="footer-perfil">
           <table class="contacto">
             <tr>
-              <td id="texto-contacto">${lang['email']}</td>
+              <td id="texto-contacto">${textoContacto} ${perfil['email']}</td>
               <td>
-                <a class="contacto-enlace" href=mailto:${perfil['email']}?subject=Contacto desde el perfil&body=Hola%20${perfil['nombre']}%2C%0A%0AMe%20gustar%C3%ADa%20ponerme%20en%20contacto%20contigo.></a>
+                <a class="contacto-enlace" href=mailto:${
+                  perfil['email']
+                }?subject=Contacto desde el perfil&body=Hola%20${
+    perfil['nombre']
+  }%2C%0A%0AMe%20gustar%C3%ADa%20ponerme%20en%20contacto%20contigo.></a>
               </td>
             </tr>
           </table>
         </footer>
       </div>
-    </main>`
+    </main>`;
 }

@@ -4,9 +4,9 @@ export function Header(data) {
           <ul class="ul-nav">
             <li class="li-logo">
               <div class="logo-texto">
-                <p id="nombre-pag">${data['nombrePag']}</p>
-                <span class="logo-texto-UCV">${data['siglasUCV']}</span>
-                <p id="periodo">${data['periodoTitulo']}</p>
+                <p id="nombre-pag">${data['sitio'][0]}</p>
+                <span class="logo-texto-UCV">${data['sitio'][1]}</span>
+                <p id="periodo">${data['sitio'][2]}</p>
               </div>
             </li>
             <li class="li-saludo-nombre">
@@ -22,7 +22,7 @@ export function Header(data) {
                     data-lang="nombre"
                     id="input-nombre"
                     type="search"
-                    placeholder="${data['textoNombreForm']}"
+                    placeholder="${data['buscar']}..."
                     aria-label="Buscar en el sitio"
                   />
 
@@ -30,7 +30,7 @@ export function Header(data) {
                     data-lang="buscar"
                     class="btn-buscar"
                     type="submit"
-                    value="${data['textoBtn']}"
+                    value="${data['buscar']}"
                   />
                 </form>
               </div>

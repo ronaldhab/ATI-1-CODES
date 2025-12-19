@@ -1,14 +1,16 @@
 import { Card } from './Card.js';
 
 export function Listado(estudiantes) {
-  const obj = {
-    ci: '29567199',
-    imagen: '/29567199/29567199Pequena.jpg',
-    nombre: 'Ronald Herrera',
-  };
+  // Si existe, lo parseamos; si no, creamos un arreglo vacío
+  const existeImgs = !!sessionStorage.getItem('imagenes');
+
+  const imagenes = existeImgs
+    ? JSON.parse(sessionStorage.getItem('imagenes'))
+    : {};
 
   const $section = document.createElement('section');
   $section.classList.add('seccion-estudiantes');
+  $section.innerHTML = `<p class="mensaje-no-encontrado filter"></p>`;
 
   const $ul = document.createElement('ul');
   $ul.classList.add('lista-estudiantes');
@@ -18,8 +20,15 @@ export function Listado(estudiantes) {
   let cardsHTML = '';
 
   estudiantes.forEach((perfilCard) => {
+    if (!existeImgs) {
+      imagenes[perfilCard['ci']] = perfilCard['imagen'];
+    }
     cardsHTML += Card(perfilCard, 'es');
   });
+
+  if (!existeImgs) {
+    sessionStorage.setItem('imagenes', JSON.stringify(imagenes));
+  }
 
   $ul.innerHTML = cardsHTML;
 
