@@ -3,61 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-lang="sitio"></title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script type="text/javascript" src="datos/index.json" defer></script>
-    <script type="text/javascript" src="js/index.js" defer></script>
+    <title>SPA</title>
+    <link rel="icon" type="image/x-icon" href="app/assets/favicon.ico" />
+    <link rel="stylesheet" href="app/assets/style.css" />
   </head>
   <body>
-    <main class="contenedor-index">
-      <header>
-        <nav>
-          <ul class="ul-nav">
-            <li class="li-logo">
-              <div class="logo-texto">
-                <p id="nombre-pag"></p>
-                <span class="logo-texto-UCV"></span>
-                <p id="periodo"></p>
-              </div>
-            </li>
-            <li class="li-saludo-nombre">
-              <p data-lang="saludo" class="saludo-texto">
-                <span id="saludo"></span>, Ronald
-              </p>
-            </li>
-            <li class="li-busqueda">
-              <div class="form-contenedor">
-                <form class="form-busqueda-nombre">
-                  <input
-                    class="buscador"
-                    data-lang="nombre"
-                    id="input-nombre"
-                    type="search"
-                    placeholder=""
-                    aria-label="Buscar en el sitio"
-                  />
-
-                  <input
-                    data-lang="buscar"
-                    class="btn-buscar"
-                    type="submit"
-                    value=""
-                  />
-                </form>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <section class="seccion-estudiantes">
-        <p class="mensaje-no-encontrado filter"></p>
-        <ul class="lista-estudiantes"></ul>
-      </section>
-      <div class="separador"></div>
-      <footer data-lang="copyright" class="footer-index">
-        <p id="copyright"></p>
-      </footer>
-    </main>
+    <div id="root"></div>
+    <script type="module" src="app/index.js"></script>
   </body>
 </html>
