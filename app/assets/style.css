@@ -28,8 +28,9 @@ ul {
 }
 
 .ul-nav {
-  display: flex;
-  justify-content: space-between;
+  flex: 1; /* Hace que los 3 LI midan lo mismo */
+  display: flex; /* Convierte el LI en contenedor flex */
+  justify-content: space-between; /* Centra el <p> horizontalmente */
 }
 
 header {
@@ -61,10 +62,12 @@ header {
 
 .li-saludo-nombre {
   width: 20%;
+  display: flex;
   border-right: 1px solid white;
 }
 
 .saludo-texto {
+  margin-left: 0.9rem;
   font-size: 1em;
   line-height: 60px;
   color: white;
@@ -100,6 +103,27 @@ header {
   background-color: #f7fbff;
   cursor: pointer;
   margin-left: 5px;
+}
+
+#language-filter {
+  color: #ffffff;
+  width: 80px;
+  margin-top: 14px;
+  margin-right: 8px;
+  padding: 4px 2px;
+  background-color: #b0babd;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  font-size: 0.8em;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.2rem center;
+  background-size: 1em;
+}
+
+select {
+  appearance: none;
 }
 
 .seccion-estudiantes {
@@ -166,6 +190,28 @@ header {
 }
 
 /*Estilos para perfil.html*/
+
+.boton-regresar-contenedor {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.boton-regresar {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #7db4fd;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  padding: 6px 12px;
+  background-color: #f7fbff;
+}
+
+.boton-regresar:hover {
+  background-color: #7db4fd;
+  color: white;
+}
+
 .contenedor-perfil {
   justify-content: center;
   display: flex;
@@ -290,6 +336,50 @@ header {
   max-width: 600px;
 }
 
+/* Estilos página 404 not found */
+
+.not-found-container {
+  margin-top: 60px;
+  padding: 40px 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: #f0f0f0;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+.not-found-h2 {
+  color: #d35780;
+  margin: 0 10px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.not-found-span {
+  color: #536878;
+  font-size: 80px;
+}
+
+.not-found-btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.not-found-btn-text {
+  color: #536878;
+  font-size: 16px;
+}
+
+.not-found-btn-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #d35780;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
 /******************Media Queries******************/
 
 /*---320px — 480px: Dispositivos móviles---*/
@@ -361,6 +451,12 @@ header {
 
   .btn-buscar {
     font-size: 0.8rem;
+  }
+
+  #language-filter {
+    width: 60px;
+    margin-top: 0;
+    background-position: right 0.2rem center;
   }
 
   .seccion-estudiantes {
@@ -491,6 +587,14 @@ header {
     font-size: 0.8rem;
   }
 
+  #language-filter {
+    width: 60px;
+    margin-top: 0;
+    font-size: 0.78em;
+
+    background-position: right 0.2rem center;
+  }
+
   .seccion-estudiantes {
     padding-top: 80px;
     width: 100%;
@@ -573,6 +677,11 @@ header {
     font-size: 0.9rem;
   }
 
+  #language-filter {
+    width: 68px;
+    font-size: 0.7rem;
+  }
+
   .seccion-estudiantes ul {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -632,6 +741,11 @@ header {
     font-size: 1rem;
   }
 
+  .li-saludo-nombre {
+    width: 20%;
+    margin-left: 0;
+  }
+
   .saludo-texto {
     font-size: 1.25rem;
     line-height: 60px;
@@ -649,6 +763,10 @@ header {
 
   .btn-buscar {
     font-size: 0.9rem;
+  }
+
+  #language-filter {
+    font-size: 0.8rem;
   }
 
   .footer-index {

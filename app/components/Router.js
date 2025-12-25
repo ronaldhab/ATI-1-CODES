@@ -1,36 +1,37 @@
 import { Home } from '../pages/Home.js';
 import { Perfil } from '../pages/Perfil.js';
+import { NotFound } from '../pages/404.js';
+
+import { agregarParametroLang, getLanguageInUrl } from '../helpers/language.js';
+
 
 export function Router() {
-  const app = document.getElementById('root');
 
-  const obj = {
-    siglasUCV: 'UCV',
-    nombrePag: 'ATI',
-    periodoTitulo: '2025-2',
-    saludo: 'Hola',
-    textoNombreForm: 'Buscar...',
-    textoBtn: 'Buscar',
-    no_encontrado: 'No se encontraron resultados para: ',
-  };
+  const lang = getLanguageInUrl() ?? undefined;
 
-  const copyRight =
-    'Copyright © 2025 Escuela de computación - ATI. Todos los derechos reservados';
+  const cookieLang = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('lang='))
+    ?.split('=')[1];
 
-  const detalle = {
-    ci: '29567199',
-    imagen: '29567199/29567199Pequena.jpg',
-    nombre: 'Ronald Herrera',
-  };
+  // Si no hay lang en la URL, pero sí en la cookie, agregarlo a la URL
+  if (!lang) {
+    agregarParametroLang(cookieLang);
+  }
 
   let { hash } = location;
 
+  const ci = hash.split('/')[2];
+  const cantElementos = hash.split('/').length;
+
   if (!hash || hash === '#/') {
-    Home();
-  } else if (hash.includes('#/perfil')) {
-    const ci = hash.split('/')[2];
-    Perfil(ci);
+    Home(lang);
+  } else if (hash.includes('#/perfil') && ci && cantElementos === 3) {
+    
+    Perfil(ci, lang);
+    
   } else {
-    app.innerHTML = `<h2 style="position: absolute; top: 10%; left: 50%; transform: translate(-50%, -50%); font-family: Arial, sans-serif; color: #333;">Página no encontrada 😥</h2>`;
+    //app.innerHTML = `<h2 style="position: absolute; top: 10%; left: 50%; transform: translate(-50%, -50%); font-family: Arial, sans-serif; color: #333;">Página no encontrada 😥</h2>`;
+    NotFound();
   }
 }

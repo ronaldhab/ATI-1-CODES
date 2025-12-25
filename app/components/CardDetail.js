@@ -1,12 +1,22 @@
-export function CardDetail(perfil, lang) {
-  const imagenes = sessionStorage.getItem('imagenes')
-    ? JSON.parse(sessionStorage.getItem('imagenes'))
-    : {};
+import { getStudentsImages } from "../helpers/getStudentsImages.js";
 
+export async function CardDetail(perfil, lang) {
+
+  let imagenes = sessionStorage.getItem('imagenes')
+    ? JSON.parse(sessionStorage.getItem('imagenes'))
+    : undefined;
+
+  if (!imagenes) {
+    imagenes = await getStudentsImages(); 
+  }
+  
   const contactoCompleto = lang['email'].split(/(?=\[email\])/);
   let textoContacto = contactoCompleto[0];
 
-  return `<main class="contenedor-perfil">
+  return `<div class="boton-regresar-contenedor">
+      <a class="boton-regresar" href="#/">${lang['home']}</a>
+    </div>
+  <main class="contenedor-perfil">
       <div class="img-contenedor">
         <picture>
           <source
@@ -72,5 +82,7 @@ export function CardDetail(perfil, lang) {
           </table>
         </footer>
       </div>
-    </main>`;
+    </main>`
+
+  
 }

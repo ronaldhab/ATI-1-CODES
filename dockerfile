@@ -1,16 +1,29 @@
-# 1. Usamos la imagen base oficial de Ubuntu con Apache preinstalado
-FROM ubuntu/apache2:latest
+FROM ubuntu
 
-# 2. Actualizamos Ubuntu e instalamos nano para revisar archivos y editarlos si es necesario
-RUN apt-get update && \
-    apt-get install nano -y && \
-    apt-get clean
+RUN apt-get update && apt-get install -y \
+	python3 python3-venv \
+	&& apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 -y
 
-# 3. Copiamos todo el conntenido del directorio . a /var/www/html/
-COPY . /var/www/html/
+RUN a2enmod wsgi
 
-# 4. Abrimos el puerto 80
+WORKDIR /var/www/html/ATI
+
+# COPY ./index.py .
+
+COPY . .
+
+WORKDIR /etc/apache2/conf-available/
+
+# Agregue la siguiente línea al archivo mod-wsgi.conf
+# WSGIScriptAlias /wsgi /var/www/html/app.py  
+COPY ./mod-wsgi.conf .
+
+RUN a2enconf mod-wsgi
+
+RUN apachectl restart
+
+# Exponer puerto (80)
 EXPOSE 80
 
-# 5. Comando de arranque
-CMD ["apachectl", "-D", "FOREGROUND"]
+# Comando para iniciar Apache (o mod_wsgi-express)
+CMD ["apache2ctl", "-D", "FOREGROUND"]

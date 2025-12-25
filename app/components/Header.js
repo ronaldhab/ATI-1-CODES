@@ -1,4 +1,14 @@
+import { getLanguageInUrl } from '../helpers/language.js';
+
 export function Header(data) {
+  const lang = [
+    { value: 'es', label: 'Español' },
+    { value: 'en', label: 'English' },
+    { value: 'pt', label: 'Português' },
+  ];
+
+  const currentLang = getLanguageInUrl();
+
   return `<header>
         <nav>
           <ul class="ul-nav">
@@ -33,6 +43,16 @@ export function Header(data) {
                     value="${data['buscar']}"
                   />
                 </form>
+                <select id="language-filter">
+                 ${lang
+                   .map(
+                     (l) =>
+                       `<option value="${l.value}" ${
+                         l.value === currentLang ? 'selected' : ''
+                       }>${l.label}</option>`
+                   )
+                   .join('')}
+                </select>
               </div>
             </li>
           </ul>

@@ -1,6 +1,14 @@
 import os
+import datetime
 from urllib.parse import quote
 import json
+
+def expensive_query(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+        
+    return json.dumps(data).encode('utf-8')
+    
 
 def application(environ, start_response):
     
@@ -8,14 +16,12 @@ def application(environ, start_response):
     path = environ.get('PATH_INFO', '/')
     
     safe_path = quote(path)
-    cookie_header = f'ati={safe_path}; Path=/ATI; SameSite=Lax'
     
     id_busqueda = None
     prefix = '/api/search/'
 
     # Directorio donde se encuentran tus archivos (ajusta según tu servidor)
     base_dir = os.path.dirname(__file__)
-
 
     if path.startswith('/api/search/'):
         cedula = path[len('/api/search/'):]
@@ -39,19 +45,21 @@ def application(environ, start_response):
         headers = [
             ('Content-Type', 'application/json; charset=utf-8'),
             ('Content-Length', str(len(content))),
-            ('Set-Cookie', cookie_header)
         ]   
 
     elif path.startswith('/api/config/'):
         idioma = path[len('/api/config/'):]
-        
+        cookie_header = ''
+
         if idioma:
             
             try:
                 data = json.loads(get_file_content(os.path.join(base_dir, 'data', 'conf', f'config{idioma.upper()}.json'), mode='r'))
-                
-                status = '200 OK'
                 content = json.dumps(data).encode('utf-8')
+                
+                max_age = 60 * 60 * 24 * 5  # 5 dias
+                cookie_header = f'lang={idioma}; Path=/; Max-Age={max_age}; SameSite=Lax;'
+                status = '200 OK'
                 
             except FileNotFoundError:
                 status = '404 Not Found'
@@ -61,56 +69,41 @@ def application(environ, start_response):
             status = '400 Bad Request'
             content = json.dumps({"error": "Debe indicar el idioma a cambiar."}).encode('utf-8')
 
-        headers = [
-            ('Content-Type', 'application/json; charset=utf-8'),
-            ('Content-Length', str(len(content))),
-            ('Set-Cookie', cookie_header)
-        ]
+        if cookie_header != '':
+            headers = [
+                ('Content-Type', 'application/json; charset=utf-8'),
+                ('Content-Length', str(len(content))),
+                ('Set-Cookie', cookie_header)
+            ]
+        else:
+            headers = [
+                ('Content-Type', 'application/json; charset=utf-8'),
+                ('Content-Length', str(len(content))),
+            ]
 
     elif path == '/' or path == '':
         try:
             content = get_file_content(os.path.join(base_dir, 'index.html'), mode='rb')
             status = '200 OK'
-            headers = [('Content-Type', 'text/html; charset=utf-8'), ('Set-Cookie', cookie_header)]
+            # date = datetime.datetime.utcnow() + datetime.timedelta(days=10)
+            # expires = date.strftime("%a, %d %b %Y %H:%M:%S GMT")
+            # cookie_header = f'lang=ES; Path=/ATI; SameSite=Lax; expires={expires}'
+            headers = [('Content-Type', 'text/html; charset=utf-8')]
+            
         except FileNotFoundError:
             status = '404 NOT FOUND'
             content = b"Archivo no encontrado."
             headers = [('Content-Type', 'text/plain')]
         
-    
-    elif path == '/nuevo/todos':
-        try:
-            with open(os.path.join(base_dir, 'nuevo.html'), 'rb') as f:
-                content = f.read()
-            status = '200 OK'
-            headers = [('Content-Type', 'text/html; charset=utf-8'), ('Set-Cookie', cookie_header)]
-        except FileNotFoundError:
-            status = '404 NOT FOUND'
-            content = b"El recurso solicitado no se encuentra."
-            headers = [('Content-Type', 'text/plain')]
-    
-    elif path == '/reto-ronald':
-        try:
-            with open(os.path.join(base_dir, 'reto-ronald', 'spa', 'pa.html'), 'rb') as f:
-                content = f.read()
-            status = '200 OK'
-            headers = [('Content-Type', 'text/html; charset=utf-8')]
-        except FileNotFoundError:
-            status = '404 NOT FOUND'
-            content = b"El recurso solicitado no se encuentra."
-            headers = [('Content-Type', 'text/plain')]
-        
     elif path == '/api/students':
         try:
-            with open(os.path.join(base_dir, 'data', 'index.json'), 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            
-            status = '200 OK'
+            data = json.loads(get_file_content(os.path.join(base_dir, 'data', 'index.json'), mode='r'))
             content = json.dumps(data).encode('utf-8')
+            status = '200 OK'
+
             headers = [
                 ('Content-Type', 'application/json; charset=utf-8'),
                 ('Content-Length', str(len(content))),
-                ('Set-Cookie', cookie_header)
             ]
             
         except FileNotFoundError:
@@ -123,22 +116,17 @@ def application(environ, start_response):
             headers = [
                 ('Content-Type', 'application/json; charset=utf-8'),
                 ('Content-Length', str(len(content))),
-                ('Set-Cookie', cookie_header)
             ]
             status = '500 Internal Server Error'
     
     else:
         status = '404 NOT FOUND'
-        try:
-            with open(os.path.join(base_dir, 'mipagina404.html'), 'rb') as f:
-                content = f.read()
-            #status = '200 OK'
-            headers = [('Content-Type', 'text/html; charset=utf-8')]
-            
-        except FileNotFoundError:
-            status = '404 NOT FOUND'
-            content = b"El recurso solicitado no se encuentra."
-            headers = [('Content-Type', 'text/plain')]
+        content = json.dumps({"error": "El recurso solicitado no puede ser localizado."}).encode('utf-8')
+
+        headers = [
+            ('Content-Type', 'application/json; charset=utf-8'),
+            ('Content-Length', str(len(content))),
+        ]
       
       
     # Enviar respuesta

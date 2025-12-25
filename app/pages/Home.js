@@ -1,26 +1,28 @@
-import { ajax } from '../helpers/ajax.js';
-import api from '../helpers/reto7_api.js';
 import { Header } from '../components/Header.js';
-import { Listado } from '../components/Listado.js';
 import { Footer } from '../components/Footer.js';
+
+import api from '../helpers/reto7_api.js';
+import { ajax } from '../helpers/ajax.js';
+import { 
+  languageMustBeChanged, 
+  getLanguageConfig } from '../helpers/language.js';
+import { Listado } from '../components/Listado.js';
 import { buscador } from '../helpers/buscador.js';
 
-export function Home() {
-  const app = document.getElementById('root');
+export function Home(lang='es') {
 
-  let { hash } = location;
+  const app = document.getElementById('root');
 
   (async () => {
     try {
-      const lang = hash.split('/')[2];
+      
+      let [estudiantes, config] = await Promise.all([
+        ajax().Get(api.STUDENTS), // json con todos los estudiantes
+        languageMustBeChanged() ? ajax().Get(api.CONFIG + lang) : Promise.resolve(null), // Petición 2
+      ])
 
-      const promesas = [
-        ajax().Get(api.STUDENTS), // Petición 1
-        ajax().Get(api.CONFIG + 'es'), // Petición 2
-      ];
-
-      const [estudiantes, config] = await Promise.all(promesas);
-
+      config = getLanguageConfig(lang, config)
+      
       //renderizamos home con los datos obtenidos
       app.innerHTML =
         `<main class="contenedor-index">` +
@@ -29,9 +31,11 @@ export function Home() {
         Footer(config) +
         `</main>`;
       buscador(config, 'index');
+      
     } catch (error) {
       // Si cualquiera falla, cae directamente aquí
       console.error('Una de las peticiones falló:', error);
     }
+
   })();
 }

@@ -1,5 +1,9 @@
 const CACHE_NAME = 'v1';
 
+self.addEventListener('install', (e) => {
+  self.skipWaiting()
+})
+
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
@@ -14,7 +18,13 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // console.log('Service Worker: Fetching');
+  
+  const isExcluded = e.request.url.includes('/api/config/')
+
+  if (isExcluded) {
+    return; // Al no llamar a event.respondWith(), el navegador maneja la petición por defecto (red)
+  }
+  
   e.respondWith(
     fetch(e.request)
       .then((res) => {
